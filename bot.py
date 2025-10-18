@@ -27,20 +27,21 @@ from telegram.ext import (
     filters
 )
 
+# Проверяем доступность библиотек
 try:
     from docx import Document
     from docx.shared import Inches, Cm
     from docx.enum.text import WD_ALIGN_PARAGRAPH
     DOCX_AVAILABLE = True
-except ImportError:
-    print("Ошибка: python-docx не установлен. Установите его: pip install python-docx")
+except ImportError as e:
+    print(f"Ошибка импорта python-docx: {e}")
     DOCX_AVAILABLE = False
 
 try:
     from PIL import Image
     PILLOW_AVAILABLE = True
-except ImportError:
-    print("Ошибка: Pillow не установлен. Установите его: pip install Pillow")
+except ImportError as e:
+    print(f"Ошибка импорта Pillow: {e}")
     PILLOW_AVAILABLE = False
 
 # Импорт конфигурации
